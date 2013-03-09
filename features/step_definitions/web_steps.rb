@@ -61,6 +61,15 @@ And /^I am logged into the admin panel$/ do
   end
 end
 
+And /^I am logouted$/ do
+  visit '/accounts/logout'
+end
+
+
+And /^I can use element "(.*)"$/ do |id|
+  page.should have_xpath("//input[@id='#{id}']")
+end
+
 And /^I am logged into the publisher panel$/ do
   visit '/accounts/login'
   fill_in 'user_login', :with => 'publisher'

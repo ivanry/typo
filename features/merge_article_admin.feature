@@ -5,13 +5,16 @@ Feature: Merge Article
 
   Background:
     Given the blog is set up
-    And I am logged into the admin panel
+    And I am logged into the publisher panel
     And I am on the new article page
     And I fill in "article_title" with "Article for merge 1"
     And I fill in "article__body_and_extended_editor" with "AAA"
     And I press "Publish"
 #    And I add comment "comment1"
 
+    Then I am logouted
+    And I should see "Login"
+    And I am logged into the admin panel
     And I am on the new article page
     And I fill in "article_title" with "Article for merge 2"
     And I fill in "article__body_and_extended_editor" with "CCC"
@@ -37,12 +40,15 @@ Feature: Merge Article
     And I press "Merge"
     Then I should be on the admin content page
     When I am on the edit page for "Article for merge 1"
+
     Then I should see "AAA"
     And I should see "BBB"
 #    And I should see "comment1"
 #    And I should see "comment2"
-#    And I should see author ""
-
+    And I should see "Article for merge 1"
+    #check author:
+    And I should see "admin"
+    And I can use element "merge_with"
 
 
 
