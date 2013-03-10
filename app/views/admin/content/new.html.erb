@@ -9,7 +9,7 @@
              do %>
 
     <div id ='attachment' <%= "style='display: none;'" if !current_user.admin? %> >
-      <%= render 'merge', { :hidden => !current_user.admin? } -%>
+      <%= if current_user.admin? then render 'merge', { :hidden => !current_user.admin? } end -%>
     </div>
 
 <% end %>
