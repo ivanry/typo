@@ -6,6 +6,27 @@ describe Admin::ContentController do
   # Like it's a shared, need call everywhere
   shared_examples_for 'index action' do
 
+    it 'should merge artivles' do
+      @fake_article1 = mock('Article1')
+      @fake_article1.stub(:content).and_return('Content1')
+      @fake_article2 = mock('Article2')
+      @fake_article2.stub(:content).and_return('Content2')
+
+      Article.should_receive(:find).with(1).
+          and_return(@fake_article1)
+      @fake_article1.should_receive(:merge_with).with(4)
+
+      #get '/admin/articles/merge/1/2' #merge_articles_path(1, 4) #, :article_to_merge_with_id => '4'
+      #put '/merge/1/2' #merge_articles_path(1, 4) #, :article_to_merge_with_id => '4'
+      #put '/articles/merging/1' #merge_articles_path(1, 4) #, :article_to_merge_with_id => '4'
+      #debugger
+      #put merging_path(1)
+      #put '/merging/1/2'
+      #get categories_path
+      put 'merge', :id => 1, :merge_with => 4
+      #get 'category'
+    end
+
     it 'should render template index' do
       get 'index'
       response.should render_template('index')

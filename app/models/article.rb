@@ -71,6 +71,16 @@ class Article < Content
     end
   end
 
+  def merge_with merge_with
+    atricle = Article.find(merge_with)
+    self.body += atricle.body
+    self.comments << atricle.comments
+    self.save!
+    #debugger
+    self
+  end
+
+
   def set_permalink
     return if self.state == 'draft'
     self.permalink = self.title.to_permalink if self.permalink.nil? or self.permalink.empty?

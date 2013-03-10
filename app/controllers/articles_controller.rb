@@ -12,11 +12,6 @@ class ArticlesController < ContentController
 
   helper :'admin/base'
 
-  def merge
-    #puts "hello from merge"
-    #render 'new'
-    redirect_to categories_path, :status => 301
-  end
 
   def index
     respond_to do |format|

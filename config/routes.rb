@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     end
   end
 
-  match 'admin/articles/merge/:id/:article_to_merge_with_id', :to => 'articles#merge', :format => false, :as => "merge_articles"
+  match 'admin/articles/merge/:id/:merge_with', :to => 'articles#merge', :format => false, :as => "merge_articles"
   #match 'merge/:id/:article_to_merge_with_id', :to => 'articles#merge', :format => false, :as => "merge_articles"
   #match "/articles/:id" => "articles#merge"
   #match 'articles/merging/:id', :to => 'articles#merge', :format => false, :as => 'merging'
