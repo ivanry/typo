@@ -72,10 +72,11 @@ class Article < Content
   end
 
   def merge_with merge_with
-    atricle = Article.find(merge_with)
-    self.body += atricle.body
-    self.comments << atricle.comments
+    article = Article.find(merge_with)
+    self.body += article.body
+    self.comments << article.comments
     self.save!
+    article.destroy
     #debugger
     self
   end
