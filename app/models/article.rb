@@ -76,6 +76,7 @@ class Article < Content
     self.body += article.body
     self.comments << article.comments
     self.save!
+    article = Article.find(merge_with)
     article.destroy
     #debugger
     self
