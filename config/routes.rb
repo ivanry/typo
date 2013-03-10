@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     end
   end
 
+  match 'admin/articles/merge/:id/:article_to_merge_with_id', :to => 'articles#merge', :format => false, :as => "merge_articles"
+  #match 'merge/:id/:article_to_merge_with_id', :to => 'articles#merge', :format => false, :as => "merge_articles"
+  #match "/articles/:id" => "articles#merge"
+  #match 'articles/merging/:id', :to => 'articles#merge', :format => false, :as => 'merging'
+
   # for CK Editor
   match 'fm/filemanager(/:action(/:id))', :to => 'Fm::Filemanager', :format => false
   match 'ckeditor/command', :to => 'ckeditor#command', :format => false
