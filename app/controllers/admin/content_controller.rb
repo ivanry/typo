@@ -7,6 +7,9 @@ class Admin::ContentController < Admin::BaseController
   cache_sweeper :blog_sweeper
 
   def merge
+    unless current_user.admin?
+      redirect_to  admin_content_path, :status => 301
+    end
     #debugger
     id = params[:id]
     article = Article.find(id)

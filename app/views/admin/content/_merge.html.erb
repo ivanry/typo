@@ -1,5 +1,5 @@
 <h4 <% if hidden %> style="display: none;"<% end %>>Merge Articles</h4>
-<label for="merge_with">Article ID</label>
-<input id="merge_with" type="text" name="merge_with" class='large' />
-<input id='merge_button' type="submit" value="<%= _('Merge') %>" name="article[draft]" class='btn info' />
+<label for="merge_with" <% if hidden %> style="display: none;"<% end %>>Article ID</label>
+<input id="merge_with" type="text" name="merge_with" class='large' <% if hidden %> style="display: none;"<% end %>/>
+<input id='merge_button' type="submit" value="<%= _('Merge') %>" name="article[draft]" class='btn info' <% if hidden %> style="display: none;"<% end %>/>
 
