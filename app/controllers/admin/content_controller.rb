@@ -7,9 +7,17 @@ class Admin::ContentController < Admin::BaseController
   cache_sweeper :blog_sweeper
 
   def merge
+    #debugger
+
+    #unless current_user.admin?
+    #  redirect_to  admin_content_path, :status => 301
+    #end
     unless current_user.admin?
-      redirect_to  admin_content_path, :status => 301
+      redirect_to :action => 'index'
+      flash[:error] = _("Error, you are not allowed to perform this action")
+      return
     end
+
     #debugger
     id = params[:id]
     article = Article.find(id)
@@ -44,11 +52,11 @@ class Admin::ContentController < Admin::BaseController
 
   def edit
     @article = Article.find(params[:id])
-    unless @article.access_by? current_user
-      redirect_to :action => 'index'
-      flash[:error] = _("Error, you are not allowed to perform this action")
-      return
-    end
+    #unless @article.access_by? current_user
+    #  redirect_to :action => 'index'
+    #  flash[:error] = _("Error, you are not allowed to perform this action")
+    #  return
+    #end
     new_or_edit
   end
 
