@@ -36,10 +36,10 @@ Feature: Merge Article
     And I should see "AAA"
     And I should see "Merge Articles"
 
-    And I fill in "merge_with" with "Art ID"
+    And I fill in "merge_with" with "3"
     And I press "Merge"
     Then I should be on the admin content page
-    When I am on the edit page for "Article for merge 1"
+    And I am on the edit page for "Article for merge 1"
 
     Then I should see "AAA"
     And I should see "BBB"

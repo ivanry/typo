@@ -20,6 +20,9 @@ module NavigationHelpers
 
     when /^the edit page for "(.*)"$/
       #admin_content_path(:edit, 2)
+      if Content.find_by_title($1) == nil
+        "/admin/content/edit/1"
+      end
       "/admin/content/edit/#{Content.find_by_title($1).id}"
 
     # Add more mappings here.
