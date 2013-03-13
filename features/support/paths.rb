@@ -25,6 +25,8 @@ module NavigationHelpers
       end
       "/admin/content/edit/#{Content.find_by_title($1).id}"
 
+    when /^create new category page$/
+      "/admin/categories/new"
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
